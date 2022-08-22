@@ -6,7 +6,7 @@
 }
 
 body {
-	background-image:url("https://images.pexels.com/photos/1540408/pexels-photo-1540408.jpeg?cs=srgb&dl=pexels-oleksandr-pidvalnyi-1540408.jpg&fm=jpg");
+	background-color: white;
 	background-size: 1000px;
     display: flex;
 	justify-content: center;

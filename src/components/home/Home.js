@@ -1,10 +1,10 @@
+import Login from "../Login/Login";
 
-
-function Home() {
+function Home({setUser}) {
   return (
     <div className="home">
+      <Login setUser={setUser}></Login >
       
-      <h1>hola</h1>
     </div>
   );
 }
