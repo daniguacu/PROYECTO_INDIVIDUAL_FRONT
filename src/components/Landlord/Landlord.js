@@ -4,6 +4,7 @@ import axios from "axios"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./landlord.css"
+import EditLandlord from "./EditLandlord";
 
 const Landlord = () => {
     const user=useContext(UserContext)
@@ -17,6 +18,7 @@ const Landlord = () => {
       then(response=>{
         setLandlord(response.data)
         setLandlordTable(response.data)
+        
       }).catch(error=>{
         console.log(error)
       })
@@ -37,6 +39,7 @@ const Landlord = () => {
         }
     });
     setLandlord(researchResult)
+    
 
     }
 
@@ -77,9 +80,10 @@ const Landlord = () => {
                 <td>{landlord.lastname}</td>
                 <td>{landlord.phone}</td>
                 <td>{landlord.email}</td>
-                <button className="minibutton">Borrar</button>
-                <button className="minibutton">Editar</button>
-                <button className="minibutton">Agregar propiedad</button>
+
+                
+                <EditLandlord landlordId={landlord._id}></EditLandlord>
+                
               </tr>
             ))}</tbody>
         </table>
