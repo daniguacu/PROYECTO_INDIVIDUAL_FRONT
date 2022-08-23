@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./landlord.css"
 import EditLandlord from "./EditLandlord";
+import AddProperty from "../Property/AddProperty";
 
 const Landlord = () => {
     const user=useContext(UserContext)
@@ -83,6 +84,7 @@ const Landlord = () => {
 
                 
                 <EditLandlord landlordId={landlord._id}></EditLandlord>
+                <AddProperty landlordId={landlord._id}></AddProperty>
                 
               </tr>
             ))}</tbody>

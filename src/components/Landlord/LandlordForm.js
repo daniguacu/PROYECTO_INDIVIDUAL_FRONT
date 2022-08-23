@@ -1,11 +1,18 @@
 import {useParams} from "react-router-dom"
 import { useState,useEffect} from "react";
 import axios from "axios";
+const initInfo = {
+  name: "",
+  lastname: "",
+  email: "",
+  phone: "",
+};
 const LandlordForm = () => {
     
     const params=useParams()
     const landlordid=params.landlordId
     const[landlord,setLandlord]=useState()
+    const [inputInfo, setInputInfo] = useState(initInfo)
     console.log(landlordid)
 
     const getLandlord= async ()=>{
@@ -25,10 +32,26 @@ const LandlordForm = () => {
         getLandlord();
     },[])
 
-    const EditLandlord=()=>{
-      console.log("esta metodo edita el landlord")
+    const EditLandlord=async()=>{
+      await axios.patch(
+        `http://localhost:3000/landlords/${landlordid}`,
+        inputInfo,
+        
+      )
+      .then(function (response) {
+          console.log("success");
+          setTimeout(() => {
+          console.log("redirect");
+        }, 2000); 
+        
+        
+        
+        
+      })
     }
-
+    const handlerChangeForm = (field) => (e) =>
+    setInputInfo({ ...inputInfo, [field]: e.target.value });
+    console.log(landlord)
     
     
     
@@ -40,23 +63,23 @@ const LandlordForm = () => {
         
         <label>
           Nombre
-          <h4>{landlord.name}</h4>
-          <input type='text'/>   
+          
+          <input type='text' value={inputInfo.name}onChange={handlerChangeForm("name")}/>   
         </label>
         <label>
           Apellido
-          <h4>{landlord.lastname}</h4>
-          <input type='text'/>   
+          
+          <input type='text' value={inputInfo.lastname}onChange={handlerChangeForm("lastname")}/>   
         </label>
         <label>
           E-mail
-          <h4>{landlord.email}</h4>
-          <input type='email'/>   
+          
+          <input type='email' value={inputInfo.email}onChange={handlerChangeForm("email")}/>   
         </label>
         <label>
           Phone
-          <h4>{landlord.phone}</h4>
-          <input type='text'/>   
+          
+          <input type='text' value={inputInfo.phone}onChange={handlerChangeForm("phone")}/>   
         </label>
         <button onClick={EditLandlord}>Actualizar</button>
        

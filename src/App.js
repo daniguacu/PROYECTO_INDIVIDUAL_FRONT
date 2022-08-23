@@ -11,6 +11,7 @@ import Property from './components/Property/Property';
 import Landlord from './components/Landlord/Landlord';
 import Tenant from './components/Tenant/Tenant';
 import LandlordForm from './components/Landlord/LandlordForm';
+import PropertyForm from './components/Property/PropertyForm';
 
 function App() {
   const [user, setUser] = useState();
@@ -32,6 +33,7 @@ function App() {
       <Route exact path="landlord" element={<Landlord />} />
       <Route exact path="tenant" element={<Tenant />} />
       <Route exact path="landlord/:landlordId/form" element={<LandlordForm />} />
+      <Route exact path="landlord/:landlordId/propertyform" element={<PropertyForm/>} />
       
       </Routes>
       </BrowserRouter>
