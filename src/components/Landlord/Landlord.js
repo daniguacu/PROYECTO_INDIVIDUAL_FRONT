@@ -3,6 +3,7 @@ import{useContext,useEffect,useState} from "react"
 import axios from "axios"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import "./landlord.css"
 
 const Landlord = () => {
     const user=useContext(UserContext)
@@ -62,6 +63,9 @@ const Landlord = () => {
               <th>Apellido</th>
               <th>telefono</th>
               <th>email</th>
+              <th></th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>{
@@ -73,6 +77,9 @@ const Landlord = () => {
                 <td>{landlord.lastname}</td>
                 <td>{landlord.phone}</td>
                 <td>{landlord.email}</td>
+                <button className="minibutton">Borrar</button>
+                <button className="minibutton">Editar</button>
+                <button className="minibutton">Agregar propiedad</button>
               </tr>
             ))}</tbody>
         </table>
@@ -80,8 +87,7 @@ const Landlord = () => {
         
       
       <button>Crear Cliente </button>
-      <button>Borrar Cliente</button>
-      <button>Editar Cliente</button>
+      
 
       
      
