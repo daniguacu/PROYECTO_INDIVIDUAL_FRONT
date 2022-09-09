@@ -6,6 +6,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./landlord.css"
 import EditLandlord from "./EditLandlord";
 import AddProperty from "../Property/AddProperty";
+import { Link } from "react-router-dom";
 
 const Landlord = () => {
     const user=useContext(UserContext)
@@ -92,7 +93,7 @@ const Landlord = () => {
       </div>
         
       
-      <button>Crear Cliente </button>
+      <Link to="register"><button>Crear Cliente </button></Link>
       
 
       
