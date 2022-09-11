@@ -1,10 +1,9 @@
-
 import { useNavigate } from "react-router-dom";
-const AddTenant = ({propertyId}) => {
+const EditTenant = ({tenantId}) => {
     const navigate=useNavigate()
     
     const redirect=()=>{
-        navigate(`${propertyId}`)
+        navigate(`${tenantId}/form`)
     }
     
 
@@ -15,7 +14,7 @@ const AddTenant = ({propertyId}) => {
   return (
     <>        
         
-    <button className="minibutton" onClick={redirect}>Agregar Inquilino</button>
+    <button className="minibutton" onClick={redirect}>Editar</button>
         
              
       
@@ -26,4 +25,4 @@ const AddTenant = ({propertyId}) => {
   );
 };
 
-export default AddTenant;
+export default EditTenant;

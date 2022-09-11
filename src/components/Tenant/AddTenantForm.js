@@ -13,19 +13,21 @@ const initInfo = {
 
 const AddTenantForm= () => {
     const params=useParams()
-    const propertyid=(params.propertyId)
-    console.log(propertyid)
+    const _id=params.propertyId
+    
     
     
     const [inputInfo, setInputInfo] = useState(initInfo)
+    const[address,setaddress]=useState("")
+    const[landlordname,setlandlordname]=useState("")
     const [landlord, setLandlord] = useState("")
-    const [property, setproperty] = useState(propertyid)
+    const [property, setproperty] = useState(_id)
     
     const [success,setsuccess]=useState(false)
     
 
     const AddTenant= async ()=>{
-        await axios.post(`http://localhost:3000/tenants/add`,{...inputInfo,property,landlord}).
+        await axios.post(`http://localhost:3000/tenants/add`,{...inputInfo,address,landlordname,property,landlord}).
         then(response=>{
           
           console.log(response.data)
@@ -46,9 +48,11 @@ const AddTenantForm= () => {
     
   useEffect(()=>{
       
-      axios.get(`http://localhost:3000/properties/propertyId`,property).
+      axios.get(`http://localhost:3000/properties/${_id}`).
         then(response=>{
           setLandlord(response.data.landlord)
+          setaddress(response.data.address)
+          setlandlordname(response.data.landlordname)
           console.log(response.data)
           
           
