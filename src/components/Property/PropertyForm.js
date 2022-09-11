@@ -10,10 +10,11 @@ const PropertyForm= () => {
     const[property,setProperty]=useState()
     const [address, setAddress] = useState("")
     const [landlord, setLandlord] = useState("")
-    
+    const[landlordname,setnamelandlord] =useState("")
+    console.log(landlordname)
 
     const AddProperty= async ()=>{
-        await axios.post(`http://localhost:3000/properties/add`,{address,landlord}).
+        await axios.post(`http://localhost:3000/properties/add`,{address,landlord,landlordname}).
         then(response=>{
           setProperty(response.data)
           console.log(response.data)
@@ -36,6 +37,15 @@ const PropertyForm= () => {
     }
   useEffect(()=>{
       setLandlord(landlordid);
+      axios.get(`http://localhost:3000/landlords/${landlordid}`).
+        then(response=>{
+          setnamelandlord(response.data.name+" "+response.data.lastname)
+          console.log(response.data.name)
+          
+          
+        }).catch(error=>{
+          console.log(error)
+        })
   },[])
     
     

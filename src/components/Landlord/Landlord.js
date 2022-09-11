@@ -7,6 +7,7 @@ import "./landlord.css"
 import EditLandlord from "./EditLandlord";
 import AddProperty from "../Property/AddProperty";
 import { Link } from "react-router-dom";
+import DeleteLandlord from "./DeleteLandlord";
 
 const Landlord = () => {
     const user=useContext(UserContext)
@@ -85,7 +86,8 @@ const Landlord = () => {
 
                 
                 <EditLandlord landlordId={landlord._id}></EditLandlord>
-                <AddProperty landlordId={landlord._id}></AddProperty>
+                <AddProperty landlordId={landlord._id} landlordname={landlord.name}></AddProperty>
+                <DeleteLandlord landlordId={landlord._id}></DeleteLandlord>
                 
               </tr>
             ))}</tbody>
