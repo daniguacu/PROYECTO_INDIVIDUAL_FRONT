@@ -1,11 +1,11 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Register from "./components/Register/Register";
 import Profile from "./components/Profile/Profile";
 import { UserContext } from "./context/UserContext";
 
-
-import { useState } from "react";
+import axios from 'axios';
+import { useState,useEffect } from "react";
 import Home from "./components/Home/Home"
 import Property from './components/Property/Property';
 import Landlord from './components/Landlord/Landlord';
@@ -19,8 +19,38 @@ import TenantEditForm from './components/Tenant/TenantEditForm';
 
 function App() {
   const [user, setUser] = useState();
+
+  const login = (user) => {
+    window.localStorage.setItem("Token", user.token);
+    window.localStorage.setItem("UserId", user.id);
+    setUser(user);
+    
+    
+  };
+  const logout = () => {
+    setUser();
+    window.localStorage.removeItem("Token");
+    window.localStorage.removeItem("UserId");
+    
+    /*     window.localStorage.setItem("UserId", null); */
+  };
   
   console.log({user})
+
+  useEffect(() => {
+    const Token = window.localStorage.getItem("UserId");
+    console.log("token visualizacion", Token);
+
+    axios
+      .get(`${process.env.REACT_APP_BACK_URL}/users/${Token}`)
+      .then((response) => {
+        setUser(response.data);
+        /*  console.log('esta es la response', response) */
+      });
+    
+    
+    
+  }, []);
   
   
   return (
@@ -30,9 +60,9 @@ function App() {
       <BrowserRouter>
       
       <Routes>
-      <Route exact path="/" element={<Home setUser={setUser}/>} />
+      <Route exact path="/" element={<Home setUser={login}/>} />
       <Route exact path="register" element={<Register />} />
-      <Route exact path="profile" element={<Profile />} />
+      <Route exact path="profile" element={<Profile logout={logout} />} />
       <Route exact path="property" element={<Property />} />
       <Route exact path="landlord" element={<Landlord />} />
       <Route exact path="tenant" element={<Tenant />} />

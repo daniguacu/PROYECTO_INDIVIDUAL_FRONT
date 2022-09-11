@@ -1,17 +1,26 @@
 
 import{UserContext} from "../../context/UserContext"
-import{useContext} from "react"
+import{useState,useEffect} from "react"
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 
-const Profile = () => {
-    const user=useContext(UserContext)
-    console.log(user.user.name)
+const Profile = ({logout}) => {
+  const userIdLocal = window.localStorage.getItem("UserId");
+  const [infoUser, setInfoUser] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BACK_URL}/users/${userIdLocal}`)
+      .then((response) => {
+        setInfoUser(response.data);
+      });
+  }, []);
   
   return (
     <>
+    <button onClick={logout}><Link to="/">cerrarSesion</Link></button>
       <h1>¡Hola!</h1>
-      <h1>{user.user.name}</h1>
+      <h1>{infoUser.name}</h1>
       
       <h3>
         Aquí podrás realizar todas las gestiones de tus propiedades
