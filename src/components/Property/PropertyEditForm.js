@@ -11,6 +11,8 @@ const PropertyEditForm = () => {
     const[property,setProperty]=useState()
     const [inputInfo, setInputInfo] = useState(initInfo)
     const[success,setsuccess]=useState(false)
+    
+    const [isError,setIsError]=useState(false)
     console.log(propertyid)
 
     
@@ -24,6 +26,11 @@ const PropertyEditForm = () => {
       .then(function (response) {
           console.log("success");
           setsuccess(true)
+          setsuccess(true)
+          if(response.data==="property exists"){
+            setIsError(true)
+            setsuccess(false)
+          }
           setTimeout(() => {
           console.log("redirect");
         }, 2000); 
@@ -57,7 +64,7 @@ const PropertyEditForm = () => {
         {
                 success && <p className="p_error">Se ha Edtado la dirección con exito</p>
                 }
-       
+       {isError && <p className="p_error">Ya existe una propiedad con esta direccion</p>}
         
              
       

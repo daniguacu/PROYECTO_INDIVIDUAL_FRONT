@@ -11,6 +11,8 @@ const PropertyForm= () => {
     const [address, setAddress] = useState("")
     const [landlord, setLandlord] = useState("")
     const[landlordname,setnamelandlord] =useState("")
+    const [success,setsuccess]=useState(false)
+    const [isError,setIsError]=useState(false)
     console.log(landlordname)
 
     const AddProperty= async ()=>{
@@ -19,6 +21,11 @@ const PropertyForm= () => {
           setProperty(response.data)
           console.log(response.data)
           setAddress("")
+          setsuccess(true)
+          if(response.data==="property exists"){
+            setIsError(true)
+            setsuccess(false)
+          }
           
           
           
@@ -43,6 +50,7 @@ const PropertyForm= () => {
           console.log(response.data.name)
           
           
+          
         }).catch(error=>{
           console.log(error)
         })
@@ -64,6 +72,10 @@ const PropertyForm= () => {
         </label>
         
         <button onClick={AddProperty}>Agregar</button>
+        {
+                success && <p className="p_error">Se ha agregado la propeidad</p>
+                }
+                {isError && <p className="p_error">Ya existe una propiedad con esta direccion</p>}
        
         
              

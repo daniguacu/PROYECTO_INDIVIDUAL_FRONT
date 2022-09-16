@@ -15,7 +15,7 @@ const TenantEditForm = () => {
     const [inputInfo, setInputInfo] = useState(initInfo)
     console.log(tenantId)
     const[success,setsuccess]=useState(false)
-   
+    const [isError,setIsError]=useState(false)
 
     
 
@@ -28,6 +28,10 @@ const TenantEditForm = () => {
       .then(function (response) {
           console.log("success");
           setsuccess(true)
+          if(response.data==="tenant exists"){
+            setIsError(true)
+            setsuccess(false)
+          }
           setTimeout(() => {
           console.log("redirect");
         }, 2000); 
@@ -77,6 +81,7 @@ const TenantEditForm = () => {
         {
                 success && <p className="p_error">Se ha Edotado el inquilino  con exito</p>
                 }
+                {isError && <p className="p_error">Ya existe un inquilino con este correo</p>}
        
         
              

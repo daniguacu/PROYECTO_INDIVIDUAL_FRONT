@@ -24,7 +24,7 @@ const AddTenantForm= () => {
     const [property, setproperty] = useState(_id)
     
     const [success,setsuccess]=useState(false)
-    
+    const [isError,setIsError]=useState(false)
 
     const AddTenant= async ()=>{
         await axios.post(`http://localhost:3000/tenants/add`,{...inputInfo,address,landlordname,property,landlord}).
@@ -32,6 +32,10 @@ const AddTenantForm= () => {
           
           console.log(response.data)
           setsuccess(true)
+          if(response.data==="tenant exists"){
+            setIsError(true)
+            setsuccess(false)
+          }
           
           
           
@@ -94,9 +98,10 @@ const AddTenantForm= () => {
         
         <button onClick={AddTenant}>Agregar</button>
 
-        {
+               {
                 success && <p className="p_error">Se ha agregado el inquilino</p>
                 }
+                {isError && <p className="p_error">Ya existe un inquilino con este correo</p>}
        
         
              
