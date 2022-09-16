@@ -34,7 +34,7 @@ const Property = () => {
     }
     useEffect(()=>{
       getproperties();
-    },[])
+    },[property.landlordname])
     const handleChange=(e)=>{
       setSearch(e.target.value)
       console.log("Búsqueda"+e.target.value)
