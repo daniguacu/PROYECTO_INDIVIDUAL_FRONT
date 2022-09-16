@@ -1,0 +1,20 @@
+.imghome{
+    width: 100px; 
+    height: 100px; 
+    float:left;
+}
+button {
+    
+    float:right;
+}
+
+  ul {
+    list-style-type: none;
+  }
+  
+  li {
+    background-color:white;
+    float: left;
+    margin-right: 10px;
+    padding: 0 4px;
+  }

@@ -26,7 +26,7 @@ const DeleteTenant = ({tenantId}) => {
         
     <button className="minibutton" onClick={remove}>Borrar</button>
     {
-    success && <p className="p_error">Inquilino Borrada con Exito</p>
+    success && <p className="p_error">Inquilino Borrado con Exito</p>
     }
         
              

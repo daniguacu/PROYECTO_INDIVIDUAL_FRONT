@@ -1,5 +1,7 @@
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
+import edit from "../../images/edit.jpg"
+import "./property.css"
 const EditProperty = ({propertyId}) => {
     const navigate=useNavigate()
     
@@ -15,7 +17,7 @@ const EditProperty = ({propertyId}) => {
   return (
     <>        
         
-    <button className="minibutton" onClick={redirect}>Editar</button>
+    <button onClick={redirect}className="minibutton">Editar</button>
         
              
       

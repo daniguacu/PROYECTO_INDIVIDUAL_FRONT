@@ -68,7 +68,7 @@ const AddTenantForm= () => {
   return (
     <>        
         
-        <h1>Formulario Agregar</h1>
+        <h1>Rellenar los Datos del Inquilino</h1>
         
         <label>
           Nombre

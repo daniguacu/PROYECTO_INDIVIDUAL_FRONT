@@ -1,5 +1,7 @@
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
+import "./tenant.css"
+import add from "../../images/add.jpg"
 const AddTenant = ({propertyId}) => {
     const navigate=useNavigate()
     
@@ -15,8 +17,8 @@ const AddTenant = ({propertyId}) => {
   return (
     <>        
         
-    <button className="minibutton" onClick={redirect}>Agregar Inquilino</button>
-        
+    
+        <button className="minibutton" onClick={redirect}>Agregar Inquilino</button>
              
       
 

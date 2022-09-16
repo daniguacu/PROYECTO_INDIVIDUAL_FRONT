@@ -46,7 +46,7 @@ const PropertyEditForm = () => {
         <h1>Formulario Editar</h1>
         
         <label>
-          Nombre
+          Digite la Dirección
           
           <input type='text' value={inputInfo.address}onChange={handlerChangeForm("address")}/>   
         </label>

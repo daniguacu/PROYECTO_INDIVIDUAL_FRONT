@@ -1,0 +1,23 @@
+.circular--portrait {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 90%;
+  }
+  
+  .circular--portrait img {
+    width: 100%;
+    height: auto;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+  
+  li {
+    background-color:white;
+    float: left;
+    margin-right: 10px;
+    padding: 0 4px;
+  }

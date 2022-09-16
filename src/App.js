@@ -16,6 +16,7 @@ import CreateLandlord from './components/Landlord/CreateLandlord';
 import PropertyEditForm from './components/Property/PropertyEditForm';
 import AddTenantForm from './components/Tenant/AddTenantForm';
 import TenantEditForm from './components/Tenant/TenantEditForm';
+import Header from './components/Header/Header';
 
 function App() {
   const [user, setUser] = useState();
@@ -56,13 +57,15 @@ function App() {
   return (
     <div className="App">
       <UserContext.Provider value={{ user }}> 
-            
-      <BrowserRouter>
       
+      <BrowserRouter>
+      <div>
+      <Header logout={logout}></Header>
+      </div>
       <Routes>
       <Route exact path="/" element={<Home setUser={login}/>} />
       <Route exact path="register" element={<Register />} />
-      <Route exact path="profile" element={<Profile logout={logout} />} />
+      <Route exact path="profile" element={<Profile  />} />
       <Route exact path="property" element={<Property />} />
       <Route exact path="landlord" element={<Landlord />} />
       <Route exact path="tenant" element={<Tenant />} />

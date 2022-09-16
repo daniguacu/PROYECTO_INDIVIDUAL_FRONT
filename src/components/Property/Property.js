@@ -6,6 +6,9 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import EditProperty from "./EditProperty";
 import AddTenant from "../Tenant/AddTenant";
 import DeleteProperty from "./DeleteProperty";
+import edit from "../../images/edit.jpg"
+import add from "../../images/add.jpg"
+import remove from "../../images/remove.jpg"
 
 
 
@@ -40,7 +43,7 @@ const Property = () => {
     }
     const filter=(parameter)=>{
       var researchResult=propertyTable.filter((l)=>{
-        if(l.name.toString().toLowerCase().includes(parameter.toLowerCase())){
+        if(l.address.toString().toLowerCase().includes(parameter.toLowerCase())){
           return l
         }
     });

@@ -1,0 +1,19 @@
+
+.edit {
+    width: 30px; 
+    height: 30px; 
+    
+}
+.delete {
+    width: 30px; 
+    height: 30px; 
+    border-color: white;
+    background-color: white;
+    
+}
+.remove {
+    
+    border-color: white;
+    background-color: white;
+    
+}
